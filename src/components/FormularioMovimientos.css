@@ -1,0 +1,17 @@
+.formulario-contenedor {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #f9fafb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: sans-serif;
+}
+.formulario-contenedor h2 { text-align: center; color: #333; }
+.campo-form { margin-bottom: 15px; display: flex; flex-direction: column; }
+.campo-form label { margin-bottom: 5px; font-weight: bold; color: #555; text-align: left; }
+.campo-form input, .campo-form select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
+.btn-guardar { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+.btn-guardar:hover { background-color: #0056b3; }
+.mensaje-error { background-color: #ffebee; color: #c62828; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center; font-weight: bold; }
+.mensaje-exito { background-color: #e8f5e9; color: #2e7d32; padding: 10px; border-radius: 4px; margin-bottom: 15px; text-align: center; font-weight: bold; }

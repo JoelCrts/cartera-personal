@@ -1,54 +1,82 @@
-.app-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f3f4f6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+/* Quitamos cualquier límite de ancho que Vite ponga por defecto */
+#root {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
 }
 
+/* Hacemos que el contenedor ocupe toda la pantalla y centre la tarjeta */
+.app-container {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center;     /* Centra verticalmente */
+  min-height: 100vh;       /* Ocupa el 100% del alto de tu pantalla */
+  width: 100vw;            /* Ocupa el 100% del ancho de tu pantalla */
+  background-color: #242424; /* El fondo oscuro que se ve en tu captura */
+}
+
+/* Estilos para que tu tarjeta se vea como una "caja" flotante */
 .card {
-  background: white;
-  padding: 2.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
   width: 100%;
-  max-width: 350px;
+  max-width: 400px; /* Evita que se estire demasiado en pantallas grandes */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   text-align: center;
 }
 
-h2 { color: #1f2937; margin-bottom: 0.5rem; }
-p { color: #6b7280; margin-bottom: 1.5rem; font-size: 0.9rem; }
+/* Ajustes para el texto dentro de la tarjeta blanca */
+.card h2 {
+  margin-top: 0;
+  color: #333;
+}
 
-input {
-  width: 100%;
-  padding: 12px;
-  margin: 8px 0;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  box-sizing: border-box;
-  font-size: 16px; /* Evita zoom en iPhone */
+.card p {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.card form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio entre los inputs */
+}
+
+.card input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fff;
 }
 
 .btn-primary {
-  width: 100%;
   padding: 12px;
-  background-color: #007AFF; /* Azul Apple */
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 8px;
-  font-weight: 600;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 15px;
-  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s;
 }
 
-.btn-primary:hover { background-color: #0056b3; }
+.btn-primary:hover {
+  background-color: #0056b3;
+}
 
 .link-text {
-  display: block;
+  display: inline-block;
   margin-top: 15px;
-  color: #007AFF;
+  color: #007bff;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 14px;
+}
+
+.link-text:hover {
+  text-decoration: underline;
 }

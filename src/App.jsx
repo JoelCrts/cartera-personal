@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
 import './App.css'
+import FormularioMovimientos from './components/FormularioMovimientos'
 
 function Login() {
   const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     alert("Simulación: ¡Login Correcto! Redirigiendo...");
+    navigate('/movimientos');
   };
 
   return (
@@ -56,6 +58,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/registro" element={<Registro />} />
+        <Route path="/movimientos" element={<FormularioMovimientos />} />
       </Routes>
     </BrowserRouter>
   )
