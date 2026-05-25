@@ -1,0 +1,18 @@
+.notfound-page {
+  min-height: calc(100vh - 64px);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 3rem 1.5rem;
+  background: white;
+}
+.notfound-img { width: min(480px, 90vw); margin-bottom: 2rem; border-radius: var(--radius-md); }
+.notfound-page h1 { font-size: 1.75rem; font-weight: 900; color: var(--text-dark); margin-bottom: .75rem; }
+.notfound-page p  { color: var(--gray-text); max-width: 420px; margin-bottom: 2rem; }
+.btn-home {
+  display: inline-block;
+  background: var(--blue-dark); color: white;
+  padding: .8rem 2rem; border-radius: var(--radius-sm);
+  font-weight: 700; text-decoration: none;
+  transition: background .2s;
+}
+.btn-home:hover { background: var(--blue-mid); text-decoration: none; }

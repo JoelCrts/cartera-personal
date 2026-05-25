@@ -1,0 +1,90 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  background: var(--blue-dark);
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  text-decoration: none;
+  color: var(--white);
+}
+.brand-icon {
+  width: 36px; height: 36px;
+  background: var(--blue-accent);
+  border-radius: 8px;
+  display: grid; place-items: center;
+  font-size: 1.1rem; font-weight: 800;
+}
+.brand-name { font-size: 1rem; letter-spacing: .02em; }
+.brand-name strong { font-weight: 700; }
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: rgba(255,255,255,.75);
+  font-size: .9rem;
+  text-decoration: none;
+  transition: color .2s;
+}
+.nav-link:hover, .nav-link.active { color: var(--white); text-decoration: none; }
+.nav-link.active { font-weight: 600; border-bottom: 2px solid var(--blue-accent); padding-bottom: 2px; }
+
+.btn-nav-primary {
+  background: var(--blue-accent);
+  color: var(--white);
+  padding: .45rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-size: .875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s;
+}
+.btn-nav-primary:hover { background: #1a6fa0; text-decoration: none; }
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  border-left: 1px solid rgba(255,255,255,.15);
+  padding-left: 1.5rem;
+}
+.user-avatar {
+  width: 32px; height: 32px;
+  background: var(--teal);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-weight: 700; font-size: .85rem; color: white;
+}
+.user-name { color: rgba(255,255,255,.85); font-size: .875rem; }
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.3);
+  color: rgba(255,255,255,.7);
+  padding: .3rem .8rem;
+  border-radius: var(--radius-sm);
+  font-size: .8rem;
+  transition: all .2s;
+}
+.btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+@media (max-width: 768px) {
+  .navbar { padding: 0 1rem; }
+  .navbar-links { gap: .75rem; }
+  .nav-link { font-size: .8rem; }
+  .user-name { display: none; }
+}

@@ -1,67 +1,61 @@
-import { useState } from 'react'
-import { BrowserRouter, Routes, Route, Link, useNavigate } from 'react-router-dom'
-import './App.css'
-import FormularioMovimientos from './components/FormularioMovimientos'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthProvider, useAuth } from './context/AuthContext';
+import Navbar    from './components/Navbar';
+import Landing   from './pages/Landing';
+import Nosotros  from './pages/Nosotros';
+import Login     from './pages/Login';
+import Registro  from './pages/Registro';
+import Dashboard from './pages/Dashboard';
+import Movimientos from './pages/Movimientos';
+import Historial from './pages/Historial';
+import Metas     from './pages/Metas';
+import Reportes  from './pages/Reportes';
+import NotFound  from './pages/NotFound';
+import './App.css';
 
-function Login() {
-  const navigate = useNavigate();
-  const handleLogin = (e) => {
-    e.preventDefault();
-    alert("Simulación: ¡Login Correcto! Redirigiendo...");
-    navigate('/movimientos');
-  };
+// Guard: redirige al login si no hay sesión
+function PrivateRoute({ children }) {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
+}
 
+// Guard: si ya hay sesión, redirige al dashboard
+function PublicRoute({ children }) {
+  const { isAuthenticated } = useAuth();
+  return isAuthenticated ? <Navigate to="/dashboard" replace /> : children;
+}
+
+function AppRoutes() {
   return (
-    <div className="app-container">
-      <div className="card">
-        <h2>Iniciar Sesión</h2>
-        <p>Cartera Personal</p>
-        <form onSubmit={handleLogin}>
-          <input type="email" placeholder="Correo electrónico" required />
-          <input type="password" placeholder="Contraseña" required />
-          <button type="submit" className="btn-primary">Entrar</button>
-        </form>
-        <Link to="/registro" className="link-text">Crear cuenta nueva</Link>
-      </div>
-    </div>
+    <>
+      <Navbar />
+      <Routes>
+        {/* Públicas */}
+        <Route path="/"         element={<Landing />} />
+        <Route path="/nosotros" element={<Nosotros />} />
+        <Route path="/login"    element={<PublicRoute><Login /></PublicRoute>} />
+        <Route path="/registro" element={<PublicRoute><Registro /></PublicRoute>} />
+
+        {/* Privadas */}
+        <Route path="/dashboard"   element={<PrivateRoute><Dashboard /></PrivateRoute>} />
+        <Route path="/movimientos" element={<PrivateRoute><Movimientos /></PrivateRoute>} />
+        <Route path="/historial"   element={<PrivateRoute><Historial /></PrivateRoute>} />
+        <Route path="/metas"       element={<PrivateRoute><Metas /></PrivateRoute>} />
+        <Route path="/reportes"    element={<PrivateRoute><Reportes /></PrivateRoute>} />
+
+        {/* 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 }
 
-function Registro() {
-  const navigate = useNavigate();
-  const handleRegistro = (e) => {
-    e.preventDefault();
-    alert("Simulación: ¡Usuario Registrado! Ve al login.");
-    navigate('/');
-  };
-
-  return (
-    <div className="app-container">
-      <div className="card">
-        <h2>Crear Cuenta</h2>
-        <p>Únete a Cartera Personal</p>
-        <form onSubmit={handleRegistro}>
-          <input type="text" placeholder="Nombre completo" required />
-          <input type="email" placeholder="Correo" required />
-          <input type="password" placeholder="Contraseña (mín 6)" minLength="6" required />
-          <button type="submit" className="btn-primary">Registrarse</button>
-        </form>
-        <Link to="/" className="link-text">¿Ya tienes cuenta? Inicia sesión</Link>
-      </div>
-    </div>
-  );
-}
-
-function App() {
+export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
-        <Route path="/movimientos" element={<FormularioMovimientos />} />
-      </Routes>
+      <AuthProvider>
+        <AppRoutes />
+      </AuthProvider>
     </BrowserRouter>
-  )
+  );
 }
-
-export default App
